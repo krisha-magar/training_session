@@ -38,3 +38,6 @@ while (counter <= 10) {
 for(let i = 0; i < 10; i++) {
     console.log("Value of i is ", i);
 }
+
+let todaysDate = new Date ();
+console.log("Today's date is ", todaysDate);
