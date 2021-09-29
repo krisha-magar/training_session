@@ -1,7 +1,7 @@
-
+const request = require("request");
 const getUserDetail1 = () => {
     return new Promise((resolve, reject) => {
-        Request(
+        request(
             "https://reqres.in/api/users",
             (error, response, body) => {
                 if (error) {
@@ -9,50 +9,7 @@ const getUserDetail1 = () => {
                 }
                 resolve({
                     version: "v1",
-                    data:[
-                        {
-                        "id": 1,
-                        "email": "george.bluth@reqres.in",
-                        "first_name": "George",
-                        "last_name": "Bluth",
-                        "avatar": "https://reqres.in/img/faces/1-image.jpg"
-                        },
-                        
-                        {"id": 2,
-                        "email": "janet.weaver@reqres.in",
-                        "first_name": "Janet",
-                        "last_name": "Weaver",
-                        "avatar": "https://reqres.in/img/faces/2-image.jpg"
-                        },
-                        {
-                        "id": 3,
-                        "email": "emma.wong@reqres.in",
-                        "first_name": "Emma",
-                        "last_name": "Wong",
-                        "avatar": "https://reqres.in/img/faces/3-image.jpg"
-                        },
-                        {
-                            "id": 4,
-                            "email": "eve.holt@reqres.in",
-                            "first_name": "Eve",
-                            "last_name": "Holt",
-                            "avatar": "https://reqres.in/img/faces/4-image.jpg"
-                        },
-                        {
-                            "id": 5,
-                            "email": "charles.morris@reqres.in",
-                            "first_name": "Charles",
-                            "last_name": "Morris",
-                            "avatar": "https://reqres.in/img/faces/5-image.jpg"
-                        },
-                        {
-                            "id": 6,
-                            "email": "tracey.ramos@reqres.in",
-                            "first_name": "Tracey",
-                            "last_name": "Ramos",
-                            "avatar": "https://reqres.in/img/faces/6-image.jpg"
-                        }
-                    ]
+                    data: body,
                 });
             }
         );
@@ -60,7 +17,7 @@ const getUserDetail1 = () => {
 };
 const getUserDetail2 = () => {
     return new Promise((resolve, reject) => {
-        Request(
+        request(
             "https://reqres.in/api/users",
             (error, response, body) => {
                 if (error) {
@@ -68,56 +25,36 @@ const getUserDetail2 = () => {
                 }
                 resolve({
                     version: "v2",
-                    data:[
-                        {
-                        "id": 1,
-                        "email": "george.bluth@reqres.in",
-                        "first_name": "George",
-                        "last_name": "Bluth",
-                        "avatar": "https://reqres.in/img/faces/1-image.jpg"
-                        },
-                        
-                        {"id": 2,
-                        "email": "janet.weaver@reqres.in",
-                        "first_name": "Janet",
-                        "last_name": "Weaver",
-                        "avatar": "https://reqres.in/img/faces/2-image.jpg"
-                        },
-                        {
-                        "id": 3,
-                        "email": "emma.wong@reqres.in",
-                        "first_name": "Emma",
-                        "last_name": "Wong",
-                        "avatar": "https://reqres.in/img/faces/3-image.jpg"
-                        },
-                        {
-                            "id": 4,
-                            "email": "eve.holt@reqres.in",
-                            "first_name": "Eve",
-                            "last_name": "Holt",
-                            "avatar": "https://reqres.in/img/faces/4-image.jpg"
-                        },
-                        {
-                            "id": 5,
-                            "email": "charles.morris@reqres.in",
-                            "first_name": "Charles",
-                            "last_name": "Morris",
-                            "avatar": "https://reqres.in/img/faces/5-image.jpg"
-                        },
-                        {
-                            "id": 6,
-                            "email": "tracey.ramos@reqres.in",
-                            "first_name": "Tracey",
-                            "last_name": "Ramos",
-                            "avatar": "https://reqres.in/img/faces/6-image.jpg"
-                        }
-                    ]
+                    data: body,
                 });
             }
         );
     });
 };
 
+//Normal Promise
+getUserDetail1()
+.then ((result) => {
+    console.log("Details of the user", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
+
+//Promise.all
 Promise.all([getUserDetail1(), getUserDetail2()])
-  .then((result) => console.log(result))
-  .catch((err) => console.log(err));
+.then ((result) => {
+    console.log("Details of the users from both api", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
+
+//Promise.race
+Promise.race([getUserDetail1(), getUserDetail2()])
+.then ((result) => {
+    console.log("Results from the first fulfilled api ", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
