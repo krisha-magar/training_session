@@ -34,9 +34,3 @@ callBackExample(2 , 2, subtract);
 // let b = "2";
 // console.log( parseInt(a) + parseInt(b));
 
-//Operators
-let a = 4;
-let b = 5;
-//a += a;
-a += b;
-console.log("The sum of a and b is", a);

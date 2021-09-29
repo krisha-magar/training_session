@@ -1,0 +1,22 @@
+{
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "desciption",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krisha-magar/training_session.git"
+  },
+  "author": "\"Krisha Lungeli Magar\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krisha-magar/training_session/issues"
+  },
+  "homepage": "https://github.com/krisha-magar/training_session#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}

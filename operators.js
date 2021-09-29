@@ -16,4 +16,5 @@ if (1 == "1") {
     console.log("This Statement is false.");
 }
 
+//ternary operator shortcut form of if and else.
 console.log(1 === "1" ? "this statement is true" : "this statement is false");
