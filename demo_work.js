@@ -32,32 +32,32 @@ const getUserDetail2 = () => {
     });
 };
 
-// //Normal Promise
-// getUserDetail1()
-// .then ((result) => {
-//     console.log("Details of the user", result)
-// })
-// .catch((error) => {
-//     console.log("Error fetching the user details", error);
-// });
+//Normal Promise
+getUserDetail1()
+.then ((result) => {
+    console.log("Details of the user", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
 
-// //Promise.all
-// Promise.all([getUserDetail1(), getUserDetail2()])
-// .then ((result) => {
-//     console.log("Details of the users from both api", result)
-// })
-// .catch((error) => {
-//     console.log("Error fetching the user details", error);
-// });
+//Promise.all
+Promise.all([getUserDetail1(), getUserDetail2()])
+.then ((result) => {
+    console.log("Details of the users from both api", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
 
-// //Promise.race
-// Promise.race([getUserDetail1(), getUserDetail2()])
-// .then ((result) => {
-//     console.log("Results from the first fulfilled api ", result)
-// })
-// .catch((error) => {
-//     console.log("Error fetching the user details", error);
-// });
+//Promise.race
+Promise.race([getUserDetail1(), getUserDetail2()])
+.then ((result) => {
+    console.log("Results from the first fulfilled api ", result)
+})
+.catch((error) => {
+    console.log("Error fetching the user details", error);
+});
 
 
 // let userDetail = () => new Promise((resolve, reject) => {
@@ -65,4 +65,19 @@ const getUserDetail2 = () => {
 //         console.log(detail);
 //     }
 // })
+getUserDetail2()
+    .then((result) => {
+        const {data} = result;
+        const actualJson = JSON.parse(data);
+        for (let d in actualJson.data) {
+            console.log("The user's id is ", actualJson.data[d].id);
+            console.log("User's email is ", actualJson.data[d].email);
+            console.log("User's first_name is ", actualJson.data[d].first_name);
+            console.log("User's last_name is", actualJson.data[d].last_name);
+            console.log("User's avatar ", actualJson.data[d].avatar);
+        }
 
+    })
+    .catch((error) => {
+        console.log("Error fetching the user details", error);
+    });
