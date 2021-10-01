@@ -32,29 +32,37 @@ const getUserDetail2 = () => {
     });
 };
 
-//Normal Promise
-getUserDetail1()
-.then ((result) => {
-    console.log("Details of the user", result)
-})
-.catch((error) => {
-    console.log("Error fetching the user details", error);
-});
+// //Normal Promise
+// getUserDetail1()
+// .then ((result) => {
+//     console.log("Details of the user", result)
+// })
+// .catch((error) => {
+//     console.log("Error fetching the user details", error);
+// });
 
-//Promise.all
-Promise.all([getUserDetail1(), getUserDetail2()])
-.then ((result) => {
-    console.log("Details of the users from both api", result)
-})
-.catch((error) => {
-    console.log("Error fetching the user details", error);
-});
+// //Promise.all
+// Promise.all([getUserDetail1(), getUserDetail2()])
+// .then ((result) => {
+//     console.log("Details of the users from both api", result)
+// })
+// .catch((error) => {
+//     console.log("Error fetching the user details", error);
+// });
 
-//Promise.race
-Promise.race([getUserDetail1(), getUserDetail2()])
-.then ((result) => {
-    console.log("Results from the first fulfilled api ", result)
-})
-.catch((error) => {
-    console.log("Error fetching the user details", error);
-});
+// //Promise.race
+// Promise.race([getUserDetail1(), getUserDetail2()])
+// .then ((result) => {
+//     console.log("Results from the first fulfilled api ", result)
+// })
+// .catch((error) => {
+//     console.log("Error fetching the user details", error);
+// });
+
+
+// let userDetail = () => new Promise((resolve, reject) => {
+//     for (let detail of getUserDetail1) {
+//         console.log(detail);
+//     }
+// })
+
